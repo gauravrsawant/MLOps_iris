@@ -42,3 +42,5 @@
 2024-04-25 18:48:48,961 -  * Debugger PIN: 160-225-410
 2024-04-25 18:49:04,380 -  * Detected change in 'C:\\Users\\gaura\\OneDrive\\Desktop\\MLOps_end_sem\\tasks\\Task1_docker_iris\\model.py', reloading
 2024-04-25 18:49:08,531 -  * Restarting with watchdog (windowsapi)
+2024-04-25 18:49:09,677 -  * Debugger is active!
+2024-04-25 18:49:09,680 -  * Debugger PIN: 160-225-410
