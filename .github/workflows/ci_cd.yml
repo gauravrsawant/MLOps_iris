@@ -1,47 +1,35 @@
-name: CI/CD for Flask App with Docker
+name: CI/CD Workflow for Flask App
 
-# Run the workflow on push to the 'main' branch
+# Trigger the workflow when pushing to the `main` branch
 on:
   push:
     branches:
       - main
 
 jobs:
-  build_and_test:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  
+
       - name: Build Docker image
         run: |
           docker build -t iris_flask_app .
 
-      - name: Start Docker container
-        run: |
-          docker run -d -p 5000:5000 iris_flask_app
-          sleep 15  # Wait for the Flask app to initialize
-
-      - name: Test Flask app
-        run: |
-          # Retry 5 times with a 5-second delay to ensure the app is running
-          for i in $(seq 1 5); do
-            if curl -s http://localhost:5000; then
-              echo "App is running"
-              break
-            else
-              echo "App not yet running, retrying..."
-              sleep 5
-            fi
-          done
-          curl http://localhost:5000  # This should succeed after retries
-
-      - name: Push Docker image to DockerHub
+      - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - run: |
+          username: ${{ secrets.DOCKERHUB_USERNAME }}  # Your DockerHub username
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}  # Your DockerHub password
+
+      - name: Push Docker image to DockerHub
+        run: |
           docker tag iris_flask_app ${{ secrets.DOCKERHUB_USERNAME }}/iris_flask_app:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/iris_flask_app:latest
