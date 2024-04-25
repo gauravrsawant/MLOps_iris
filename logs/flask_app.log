@@ -37,3 +37,8 @@
 2024-04-25 18:38:49,558 - 127.0.0.1 - - [25/Apr/2024 18:38:49] "POST /predict HTTP/1.1" 200 -
 2024-04-25 18:48:44,157 -  * Detected change in 'C:\\Users\\gaura\\anaconda3\\Scripts\\conda-script.py', reloading
 2024-04-25 18:48:44,604 -  * Detected change in 'C:\\Users\\gaura\\anaconda3\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py', reloading
+2024-04-25 18:48:46,410 -  * Restarting with watchdog (windowsapi)
+2024-04-25 18:48:48,956 -  * Debugger is active!
+2024-04-25 18:48:48,961 -  * Debugger PIN: 160-225-410
+2024-04-25 18:49:04,380 -  * Detected change in 'C:\\Users\\gaura\\OneDrive\\Desktop\\MLOps_end_sem\\tasks\\Task1_docker_iris\\model.py', reloading
+2024-04-25 18:49:08,531 -  * Restarting with watchdog (windowsapi)
